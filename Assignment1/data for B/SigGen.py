@@ -72,6 +72,9 @@ def genMatrix(docShinglingCount):
             print e
             print "shgCode, docCode:", shgCode, docCode
             sys.exit(-1) 
+    #print "docCnt, shgCnt, docCnt*shgCnt"
+    #print docCnt, shgCnt, docCnt*shgCnt
+    #sys.exit(-1) 
 
     return m, shgMax, docCnt, shgCnt, totalShgCnt
 
@@ -134,7 +137,7 @@ def minHashSig(m, shgMax, docCnt, shgCnt, totalShgCnt, nHash):
 
 def genSigM(docShinglingCount, nHash):
     global g_code2Doc
-    m, shgMax, docCnt, shgCnt, totalShgCnt = genMatrix(ret)
+    m, shgMax, docCnt, shgCnt, totalShgCnt = genMatrix(docShinglingCount)
     sigM, pai = minHashSig(m, shgMax, docCnt, shgCnt, totalShgCnt, nHash)
     return sigM, g_code2Doc
         
