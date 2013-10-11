@@ -85,7 +85,6 @@ class DGIM(object):
         print ""
 
 if __name__ == '__main__':
-#    #readData('stream_data.txt')
 #    import random
 #    d = DGIM(20)
 #    window = []
@@ -104,5 +103,15 @@ if __name__ == '__main__':
 #    print d.query(10)
 #
 #
+    data = readData('stream_data.txt')
+    d = DGIM(1000)
+    ts = 0
+    for each in data:
+        d.eat(each, ts)
+        ts += 1
 
-    pass
+    d.printWinList()
+    onesActually = sum(data[-1000:])
+    print "1's in last 1000bits ~=", d.query(1000), "in fact = ", onesActually
+
+
