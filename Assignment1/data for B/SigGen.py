@@ -10,6 +10,7 @@ This module is for generationg signature
 import random
 import copy
 import sys
+import pickle
 
 g_code2Shg = []
 g_code2Doc = []
@@ -140,12 +141,29 @@ def genSigM(docShinglingCount, nHash):
     m, shgMax, docCnt, shgCnt, totalShgCnt = genMatrix(docShinglingCount)
     sigM, pai = minHashSig(m, shgMax, docCnt, shgCnt, totalShgCnt, nHash)
     return sigM, g_code2Doc
+
+def dumpSigM(m, fileName):
+    global g_code2Shg, g_code2Doc, g_shg2Code, g_doc2Code
+    dumpStaff = (g_code2Shg, g_code2Doc, g_shg2Code, g_doc2Code, m)
+    f = open(fileName, 'w')
+    ret = pickle.dump(dumpStaff, f)
+    f.close()
+    return ret
+
+def loadSigM(fileName):
+    f = open(fileName)
+    g_code2Shg, g_code2Doc, g_shg2Code, g_doc2Code, m = pickle.load(f)
+    f.close()
+    return g_code2Shg, g_code2Doc, g_shg2Code, g_doc2Code, m
         
 if __name__ == '__main__':
     import ReadUtil
     print 'hello world'
     ret = ReadUtil.readShinglingData('LSH_data.txt')
     print "now count it"
-    print genSigM(ret, 10)
+    ret = genSigM(ret, 100)
+    print 'now dump it into SIG_M.pickle'
+    dumpSigM(ret, 'SIG_M.pickle')
+
 
 

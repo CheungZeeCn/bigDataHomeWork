@@ -51,11 +51,11 @@ def jaccardTopN(jaccardM, doc, N=10):
 if __name__ == '__main__':
     #print 'hello world'
     import ReadUtil
-    ret = ReadUtil.readShinglingData('LSH_data_min.txt')
-    print ret
+    ret = ReadUtil.readShinglingData('LSH_data.txt')
+    #print ret
     jM = countJaccardM(ret)
-    print jM
-    print jaccardTopN(jM, 0, 1)
+    #print jM
+    print jaccardTopN(jM, 1, 100)
 
 
 
