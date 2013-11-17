@@ -1,0 +1,4 @@
+compare the plots:
+all of them drop quickly, but with more complicate image, the bigger eigenvalues will be.
+for example: principles of 0 or 2 are about 160K while 1's is 100Km and 012's is about 200K.
+
